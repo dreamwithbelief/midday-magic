@@ -1,0 +1,11 @@
+<?php
+/**
+ * Original Creation Information
+ *      Author: Kyle Stafford
+ *      Date:   6/30/14
+ *      Time:   11:00 PM
+ */
+
+  require_once 'core/init.php';
+
+?>
