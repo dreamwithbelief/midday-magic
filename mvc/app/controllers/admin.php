@@ -4,7 +4,7 @@ class Admin extends Controller
 {
     public function index()
     {
-        $this->view('admin/index');
-        $user = $this->model('User');
+        $this->view( 'admin/index' );
+        $user = $this->model( 'User' );
     }
 }
