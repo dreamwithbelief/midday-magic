@@ -5,7 +5,7 @@ class App {
     protected  $controller = 'home', $method = 'index', $params = [];
     public function __construct()
     {
-        $url = $this->parseUrl();
+        $url = $this->parse_url();
 
         if( file_exists( '../app/controllers/'.$url[0].'.php' ) )
         {
@@ -31,7 +31,7 @@ class App {
         call_user_func_array( [ $this->controller, $this->method ], $this->params );
     }
 
-    public function parseUrl()
+    public function parse_url()
     {
         if( isset( $_GET[ 'url' ] ) )
         {

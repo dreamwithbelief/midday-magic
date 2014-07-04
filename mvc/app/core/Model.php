@@ -17,7 +17,7 @@ class Model
         }
     }
 
-    public static function getInstance()
+    public static function get_instance()
     {
         if( !isset( self::$_instance ) )
         {
@@ -26,7 +26,7 @@ class Model
         return self::$_instance;
     }
     
-    public function setTable( $table )
+    public function set_table( $table )
     {
         $this->_table = strtolower( $table );
     }
