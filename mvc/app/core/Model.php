@@ -3,9 +3,9 @@
 class Model
 {
     private static $_instance = null;
-    private $_pdo, $_query, $_error = false, $_results, $_count = 0, $_table;
+    protected $_pdo, $_query, $_error = false, $_results, $_count = 0, $_table;
 
-    private function __construct()
+    protected function __construct()
     {
         try
         {

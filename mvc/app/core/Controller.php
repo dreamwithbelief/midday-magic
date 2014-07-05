@@ -10,8 +10,9 @@ class Controller
         return $m;
     }
 
-    public function view( $view, $data = array() )
+    public function view( $view = 'home/index', $data = array(), $layout = 'index' )
     {
-        require_once '../app/views/'.$view.'.php';
+        $yield = '../app/views/'.$view.'.php';
+        require_once '../app/views/layout/'.$layout.'.php';
     }
 }
