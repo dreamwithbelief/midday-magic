@@ -8,6 +8,11 @@ class Admin extends Controller
         $user = $this->model( 'user' );
     }
 
+    public function user_manager()
+    {
+        $this->view( 'admin/user_manager' );
+    }
+
     public function login()
     {
         $this->view( 'admin/login' );
@@ -25,10 +30,9 @@ class Admin extends Controller
                     // Log User In
                     $user = $this->model( 'user' );
                     $auth = $user->auth( Input::get( 'username' ), Input::get( 'password' ) );
-                    if($auth)
+                    if( $auth )
                     {
                         $user->login( $auth );
-                        Redirect::to( 'admin/index' );
                     }
                     else
                     {
@@ -45,7 +49,9 @@ class Admin extends Controller
 
     public function logout()
     {
-        Session::delete();
+        Session::delete( 'logged_in' );
+        Session::delete( 'user_id' );
+        Cookie::delete( Config::get( 'remember/cookie_name' ) );
         Redirect::to( 'admin/login' );
     }
 }

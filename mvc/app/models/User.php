@@ -42,7 +42,29 @@ class User extends Model
         {
             Session::put( 'logged_in', true );
             Session::put( 'user_id', $user->id );
-            Session::put( 'username', $user->username );
+            Redirect::to( 'admin/index' );
+        }
+    }
+
+    public function remember( $user_id, $table = 'sessions' )  // Sets Cookie for Remember Me feature
+    {
+        $hash = Hash::unique();
+        Cookie::put( Config::get( 'remember/cookie_name' ), $hash, Config::get( 'remember/cookie_expiry' ) );
+        $fields = array( 'user_id' => $user_id, 'hash' => $hash );
+        $session = $this->insert( $fields, $table );
+        return $session;
+    }
+
+    public function is_remembered()
+    {
+        if( Cookie::exists( Config::get( 'remember/cookie_name' ) ) && !Session::exists( Config::get( 'session/session_name' ) ) )
+        {
+            $hash = Cookie::get( Config::get( 'remember/cookie_name' ) );
+            $session = $this->get( array( 'hash', '=', $hash ), 'sessions' );
+            if($session->count())
+            {
+                $this->login( $session->user_id );
+            }
         }
     }
 }

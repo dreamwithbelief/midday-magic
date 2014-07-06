@@ -28,7 +28,7 @@ class Model
     
     public function set_table( $table )
     {
-        $this->_table = strtolower( $table );
+        $this->_table = strtolower( $table.'s' );
     }
 
     public function query( $sql, $params = array() ) 
@@ -72,18 +72,21 @@ class Model
         return false;
     }
 
-    public function get( $where ) 
+    public function get( $where, $table = null )
     {
-        return $this->action( "SELECT *", $this->_table, $where );
+        $t = (empty($table)) ? $this->_table : $table;
+        return $this->action( "SELECT *", $t, $where );
     }
 
-    public function delete( $where ) 
+    public function delete( $where, $table = null )
     {
-        return $this->action( "DELETE", $this->_table, $where );
+        $t = (empty($table)) ? $this->_table : $table;
+        return $this->action( "DELETE", $t, $where );
     }
 
-    public function insert( $fields = array() ) 
+    public function insert( $fields = array(), $table = null )
     {
+        $t = (empty($table)) ? $this->_table : $table;
         $keys = array_keys( $fields );
         $values = '';
         $x = 1;
@@ -98,7 +101,7 @@ class Model
             $x++;
         }
 
-        $sql = "INSERT INTO { $this->_table } (`" . implode( '`, `', $keys ) . "`) VALUES ({ $values })";
+        $sql = "INSERT INTO { $t } (`" . implode( '`, `', $keys ) . "`) VALUES ({ $values })";
 
         if ( !$this->query( $sql, $fields )->error() ) 
         {
@@ -107,8 +110,9 @@ class Model
         return false;
     }
 
-    public function update( $id, $fields = array() ) 
+    public function update( $id, $fields = array(), $table = null )
     {
+        $t = (empty($table)) ? $this->_table : $table;
         $set = '';
         $x = 1;
 
@@ -121,7 +125,7 @@ class Model
             }
         }
 
-        $sql = "UPDATE { $this->_table } SET { $set } WHERE id = { $id }";
+        $sql = "UPDATE { $t } SET { $set } WHERE id = { $id }";
 
         if ( $this->query( $sql, $fields )->error() ) 
         {
