@@ -2,11 +2,12 @@
 
 class Controller
 {
-    public function model( $model )
+    public function model( $model, $table = '' )
     {
         require_once '../app/models/'.$model.'.php';
         $m = new $model();
-        $m->setTable( $model );
+        $table = empty( $table ) ? $model : $table;
+        $m->setTable( $table );
         return $m;
     }
 

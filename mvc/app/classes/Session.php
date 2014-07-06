@@ -17,11 +17,16 @@ class Session
         return $_SESSION[ $name ];
     }
 
-    public static function delete( $name )
+    public static function delete( $name = null )
     {
-        if(self::exists( $name ) )
+        if( self::exists( $name ) )
         {
             unset( $_SESSION[ $name ] );
+        }
+        if( empty( $name ) )
+        {
+            session_unset();
+            session_destroy();
         }
     }
 

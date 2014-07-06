@@ -18,7 +18,7 @@ class Input
         }
     }
 
-    public static function get( $item, $dataType )
+    public static function get( $item, $dataType = 'str' )
     {
         if( isset( $_POST[ $item ] ) )
         {

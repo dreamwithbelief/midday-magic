@@ -36,16 +36,9 @@ class Model
         $this->_error = false;
         if ( $this->_query = $this->_pdo->prepare( $sql ) ) 
         {
-            $x = 1;
             if ( count( $params ) ) 
             {
-                foreach ( $params as $param ) 
-                {
-                    $this->_query->bindValue( $x, $param );
-                    $x++;
-                }
-
-                if ( $this->_query->execute() ) 
+                if ( $this->_query->execute($params) )
                 {
                     $this->_results = $this->_query->fetchAll( PDO::FETCH_OBJ );
                     $this->_count = $this->_query->rowCount();
