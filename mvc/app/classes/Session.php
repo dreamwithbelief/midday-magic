@@ -25,17 +25,18 @@ class Session
         }
     }
 
-    public static function flash( $name, $string = '' )
+    public static function set_flash( $name, $string = '' )
+    {
+            self::put( $name, $string );
+    }
+
+    public static function get_flash( $name )
     {
         if(self::exists( $name ) )
         {
             $session = self::get( $name );
             self::delete( $name );
             return $session;
-        }
-        else
-        {
-            self::put( $name, $string );
         }
         return '';
     }

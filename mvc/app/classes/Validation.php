@@ -17,42 +17,42 @@ class Validation
             {
                 $value = $source[ $item ];
 
-                if( $rule === 'required' && empty( $value ) )
+                switch( $rule )
                 {
-                    $this->add_err( "{ $item } is required" );
-                }
-                elseif( !empty( $value ) )
-                {
-                    switch( $rule )
-                    {
-                        case 'min':
-                            if( strlen( $value ) < $rule_value )
-                            {
-                                $this->add_err("{ $item } must be a minimum of { $rule_value } characters.");
-                            }
-                            break;
-                        case 'max':
-                            if( strlen( $value ) > $rule_value )
-                            {
-                                $this->add_err("{ $item } must be a maximum of { $rule_value } characters.");
-                            }
-                            break;
-                        case 'matches':
-                            if( $value != $source[ $rule_value ] )
-                            {
-                                $this->add_err("{ $rule_value } must match { $item }.");
-                            }
-                            break;
-                        case 'unique':
-                            $check = $this->_db->get( $rule_value, array($item, '=', $value ) );
-                            if( $check->count() )
-                            {
-                                $this->add_err("{ $item } already exists.");
-                            }
-                            break;
-                        default:
-                            break;
-                    }
+                    case 'required':
+                        if( empty( $value ) )
+                        {
+
+                            $this->add_err( "{$item} is required" );
+                        }
+                        break;
+                    case 'min':
+                        if( strlen( $value ) < $rule_value )
+                        {
+                            $this->add_err( "{$item} must be a minimum of {$rule_value} characters." );
+                        }
+                        break;
+                    case 'max':
+                        if( strlen( $value ) > $rule_value )
+                        {
+                            $this->add_err( "{$item} must be a maximum of {$rule_value} characters." );
+                        }
+                        break;
+                    case 'matches':
+                        if( $value != $source[ $rule_value ] )
+                        {
+                            $this->add_err( "{$rule_value} must match {$item}." );
+                        }
+                        break;
+                    case 'unique':
+                        $this->_db->get( $rule_value, array($item, '=', $value ) );
+                        if( $this->_db->count() )
+                        {
+                            $this->add_err( "{$item} already exists." );
+                        }
+                        break;
+                    default:
+                        break;
                 }
             }
         }
@@ -70,16 +70,15 @@ class Validation
         $this->_errors[] = $error;
     }
 
-    public function errors( $num = null )
+    public function errors( $one = false )
     {
-        $num = intval( $num );
-        if( empty( $num ) )
+        if( $one )
         {
-            return $this->_errors;
+            return $this->_errors[0];
         }
         else
         {
-            return array_slice( $this->_errors, 0, $num, true);
+            return $this->_errors;
         }
     }
 

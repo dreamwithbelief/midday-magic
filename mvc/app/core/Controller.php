@@ -7,7 +7,7 @@ class Controller
         require_once '../app/models/'.$model.'.php';
         $m = new $model();
         $table = empty( $table ) ? $model : $table;
-        $m->setTable( $table );
+        $m->set_table( $table );
         return $m;
     }
 

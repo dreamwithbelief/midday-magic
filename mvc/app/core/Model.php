@@ -52,8 +52,9 @@ class Model
         return $this;
     }
 
-    public function action( $action, $where = array() ) 
+    public function action( $action, $where = array(), $table = null )
     {
+        $t = (empty($table)) ? $this->_table : $table;
         if ( count( $where ) === 3 ) 
         {
             $operators = array( '=', '>', '<', '>=', '<=', '&', 'IS', 'IS NOT' );
@@ -62,7 +63,7 @@ class Model
             $value = $where[2];
 
             if ( in_array( $operator, $operators ) ) {
-                $sql = "{ $action } FROM { $this->_table } WHERE { $field } { $operator } ?";
+                $sql = "{$action} FROM {$this->_table} WHERE {$field} {$operator} ?";
                 if ( !$this->query( $sql, array( $value ) )->error() ) 
                 {
                     return $this;
@@ -75,13 +76,13 @@ class Model
     public function get( $where, $table = null )
     {
         $t = (empty($table)) ? $this->_table : $table;
-        return $this->action( "SELECT *", $t, $where );
+        return $this->action( "SELECT *", $where, $t );
     }
 
     public function delete( $where, $table = null )
     {
         $t = (empty($table)) ? $this->_table : $table;
-        return $this->action( "DELETE", $t, $where );
+        return $this->action( "DELETE", $where, $t );
     }
 
     public function insert( $fields = array(), $table = null )
@@ -101,7 +102,7 @@ class Model
             $x++;
         }
 
-        $sql = "INSERT INTO { $t } (`" . implode( '`, `', $keys ) . "`) VALUES ({ $values })";
+        $sql = "INSERT INTO {$t} (`" . str_replace( ':', '', implode( '`, `', $keys ) ) . "`) VALUES (".implode( ',', $keys ).")";
 
         if ( !$this->query( $sql, $fields )->error() ) 
         {
@@ -125,7 +126,7 @@ class Model
             }
         }
 
-        $sql = "UPDATE { $t } SET { $set } WHERE id = { $id }";
+        $sql = "UPDATE {$t} SET {$set} WHERE id = {$id}";
 
         if ( $this->query( $sql, $fields )->error() ) 
         {

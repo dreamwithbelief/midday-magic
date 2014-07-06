@@ -12,17 +12,17 @@ class User extends Model
         if( !empty( $user ) )
         {
             $field = ( is_numeric( $user ) ) ? 'id' : 'username';
-            $data = $this->get( array($field, '=', $user ) );
-
-            if( $data->count() )
+            $user = $this->get( array($field, '=', $user ) );
+            var_dump($user);
+            if( !empty($user) )
             {
-                return $data->first();
+                return $user;
             }
         }
         return false;
     }
 
-    public function authenticate( $username = null, $password = null )
+    public function auth( $username = null, $password = null )
     {
         $user = $this->find( $username );
         if($user)
