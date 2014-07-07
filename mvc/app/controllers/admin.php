@@ -5,6 +5,7 @@ class Admin extends Controller
     private $current_user;
     public function index()
     {
+        $this->logged_in();  // Redirect if user not logged in
         $user = $this->model( 'user' );
         if( $user->find( Session::get('user_id') ) )
         {
@@ -113,5 +114,13 @@ class Admin extends Controller
         Session::delete( 'user_id' );
         Cookie::delete( Config::get( 'remember/cookie_name' ) );
         Redirect::to( 'login' );
+    }
+
+    private function logged_in()
+    {
+        if(!Session::exists('logged_in') || !(Session::get('logged_in') === true))
+        {
+            Redirect::to('login');
+        }
     }
 }
