@@ -7,10 +7,10 @@ require_once 'core/Model.php';
 
 $GLOBALS[ 'config' ] = array(
     'db' => array(
-        'host' => '127.0.0.1',
-        'name' => 'codest6_mvcdev',
-        'user' => 'codest6_m8brgarc',
-        'pass' => 'acain31493149'
+        'host' => 'mysql.development.speakoutscc.com',
+        'name' => 'speakout_development',
+        'user' => 'speakout_dev',
+        'pass' => '%4lqW^KqATw83*OUc#4q'
     ),
     'remember' => array(
         'cookie_name' => 'hash',

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>SpeakOut SCC</title>
 </head>
 <body>
     <?php require_once $yield; ?>

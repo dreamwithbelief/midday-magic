@@ -2,12 +2,16 @@
 
 class Admin extends Controller
 {
+    private $current_user;
     public function index()
     {
         $user = $this->model( 'user' );
-        $current_user = $user->find( Session::get('user_id') );
-        $username = $current_user->username;
-        $this->view( 'admin/index' );
+        if( $user->find( Session::get('user_id') ) )
+        {
+            $this->current_user = $user->first();
+        }
+        $name = $this->current_user->name;
+        $this->view( 'admin/index', array('name' => $name) );
     }
 
     public function user_manager()
@@ -24,13 +28,15 @@ class Admin extends Controller
                 $v = new Validation();
                 $validate = $v->check($_POST, array(
                     'username' => array( 'required' => true ),
-                    'password' => array( 'required' => true )
+                    'password' => array( 'required' => true ),
+                    'name' => array( 'required' => true )
                 ) );
                 if( $validate->passed() )
                 {
                     // User Exists?
                     $user = $this->model( 'user' );
-                    if( $user->find( Input::get( 'username' ) ) )
+                    $user->find( Input::get( 'username' ) );
+                    if( $user->count() )
                     {
                         Session::set_flash( 'register', 'User Already Exists' );
                     }
@@ -38,8 +44,14 @@ class Admin extends Controller
                     {
                         $salt = Hash::salt();
                         $password = Hash::make( Input::get( 'password' ), $salt );
-                        $created = $user->insert( array( ':username' => Input::get( 'username' ), ':password' => $password, ':salt' => $salt ) );
-                        if($created)
+                        $inserted = $user->insert( array(
+                            'username' => Input::get( 'username' ),
+                            'password' => $password,
+                            'salt' => $salt,
+                            'name' => Input::get('name'),
+                            'joined' => date('Y-m-d')
+                        ) );
+                        if( $inserted )
                         {
                             Session::set_flash( 'register', 'User Successfully Registered' );
                         }
@@ -73,11 +85,13 @@ class Admin extends Controller
                 {
                     // Log User In
                     $user = $this->model( 'user' );
-                    $auth = $user->auth( Input::get( 'username' ), Input::get( 'password' ) );
-                    var_dump($auth);
-                    if( $auth )
+                    $authorized = $user->auth( Input::get( 'username' ), Input::get( 'password' ) );
+                    if( $authorized )
                     {
-                        $user->login( $auth );
+                        if( $user->login( $authorized ) )
+                        {
+                            Redirect::to( 'index' );
+                        }
                     }
                     else
                     {

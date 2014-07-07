@@ -4,66 +4,57 @@ class User extends Model
 {
     public function __construct()
     {
-        parent::__construct();
+        parent::__construct();  // User parent constructor when this class is instantiated.  (See core/Model.php)
     }
 
-    public function find( $user = null )
+    public function find( $user = null )  // Find Single User using id or username
     {
         if( !empty( $user ) )
         {
             $field = ( is_numeric( $user ) ) ? 'id' : 'username';
-            $user = $this->get( array($field, '=', $user ) );
-            var_dump($user);
-            if( !empty($user) )
+            return $this->get( $field.' = '.$user );
+        }
+        return false;
+    }
+
+    public function auth( $username = null, $password = null )  // Authenticate User
+    {
+        if( $this->find( $username ) )
+        {
+            if( $this->first()->password === Hash::make( $password, $this->first()->salt ) )
             {
-                return $user;
+                return true;
             }
         }
         return false;
     }
 
-    public function auth( $username = null, $password = null )
+    public function login( $auth )  // Logs User In aka Create Session boolean from auth() required as parameter
     {
-        $user = $this->find( $username );
-        if($user)
-        {
-            if($user->password === Hash::make( $password, $user->salt ))
-            {
-                return $user->id;
-            }
-        }
-        return false;
-    }
-
-    public function login( $user_id )
-    {
-        $user = $this->get( array( 'id', '=', $user_id ) );
-        if( $user->count() )
-        {
+        if($auth){
             Session::put( 'logged_in', true );
-            Session::put( 'user_id', $user->id );
-            Redirect::to( 'admin/index' );
+            Session::put( 'user_id', $this->first()->id );
         }
+        return Session::exists('logged_in');
     }
 
-    public function remember( $user_id, $table = 'sessions' )  // Sets Cookie for Remember Me feature
+    public function remember( $table = 'sessions' )  // Sets Cookie for Remember Me feature // Untested
     {
         $hash = Hash::unique();
         Cookie::put( Config::get( 'remember/cookie_name' ), $hash, Config::get( 'remember/cookie_expiry' ) );
-        $fields = array( 'user_id' => $user_id, 'hash' => $hash );
-        $session = $this->insert( $fields, $table );
-        return $session;
+        $fields = array( 'user_id' => $this->first()->id, 'hash' => $hash );
+        return $this->insert( $fields, $table );
     }
 
-    public function is_remembered()
+    public function is_remembered()  // Auto login if remembered user  // Untested
     {
         if( Cookie::exists( Config::get( 'remember/cookie_name' ) ) && !Session::exists( Config::get( 'session/session_name' ) ) )
         {
             $hash = Cookie::get( Config::get( 'remember/cookie_name' ) );
-            $session = $this->get( array( 'hash', '=', $hash ), 'sessions' );
-            if($session->count())
+            $this->get( 'hash = '. $hash, 'user_sessions' );
+            if($this->count())
             {
-                $this->login( $session->user_id );
+                $this->login( true );
             }
         }
     }
