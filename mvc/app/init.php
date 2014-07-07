@@ -1,11 +1,12 @@
 <?php
-session_start();
+
 require_once 'core/App.php';
 require_once 'core/Controller.php';
 require_once 'core/Model.php';
 
 
 $GLOBALS[ 'config' ] = array(
+    'base' => 'http://development.speakoutscc.com/',
     'db' => array(
         'host' => 'mysql.development.speakoutscc.com',
         'name' => 'speakout_development',

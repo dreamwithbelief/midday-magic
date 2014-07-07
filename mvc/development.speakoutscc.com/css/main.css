@@ -1,0 +1,9 @@
+
+/*  Basic Form Styles */
+form, form input {
+    display: block;
+}
+
+form {
+    margin: 0 auto;
+}

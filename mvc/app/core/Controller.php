@@ -16,4 +16,9 @@ class Controller
         $yield = '../app/views/'.$view.'.php';
         require_once '../app/views/layout/'.$layout.'.php';
     }
+
+    public function css()
+    {
+
+    }
 }

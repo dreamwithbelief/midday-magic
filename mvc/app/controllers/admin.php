@@ -12,15 +12,10 @@ class Admin extends Controller
             $this->current_user = $user->first();
         }
         $name = $this->current_user->name;
-        $this->view( 'admin/index', array('name' => $name) );
+        $this->view( 'admin/index', array( 'name' => $name ) );
     }
 
-    public function user_manager()
-    {
-        $this->view( 'admin/user_manager' );
-    }
-
-    public function register( $key = null )
+    public function register()
     {
         if( Input::exists() )
         {
@@ -49,8 +44,8 @@ class Admin extends Controller
                             'username' => Input::get( 'username' ),
                             'password' => $password,
                             'salt' => $salt,
-                            'name' => Input::get('name'),
-                            'joined' => date('Y-m-d')
+                            'name' => Input::get( 'name' ),
+                            'joined' => date( 'Y-m-d' )
                         ) );
                         if( $inserted )
                         {
@@ -78,7 +73,7 @@ class Admin extends Controller
             if( Token::check( Input::get( 'token' ) ) )
             {
                 $v = new Validation();
-                $validate = $v->check($_POST, array(
+                $validate = $v->check( $_POST, array(
                     'username' => array( 'required' => true ),
                     'password' => array( 'required' => true )
                 ) );
@@ -118,9 +113,9 @@ class Admin extends Controller
 
     private function logged_in()
     {
-        if(!Session::exists('logged_in') || !(Session::get('logged_in') === true))
+        if( !Session::exists( 'logged_in' ) || !(Session::get( 'logged_in' ) === true) )
         {
-            Redirect::to('login');
+            Redirect::to( 'login' );
         }
     }
 }
