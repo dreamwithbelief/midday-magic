@@ -6,4 +6,24 @@ class Home extends Controller
     {
 
     }
+
+    public function events()
+    {
+
+    }
+
+    public function contact()
+    {
+
+    }
+
+    public function gallery()
+    {
+
+    }
+
+    public function about()
+    {
+
+    }
 }
