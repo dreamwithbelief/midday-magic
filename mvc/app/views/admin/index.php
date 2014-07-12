@@ -1,1 +1,1 @@
-<h1>Welcome, <?= $data['name']; ?></h1>
+<h1>Welcome, <?= $data[ 'name' ]; ?></h1>

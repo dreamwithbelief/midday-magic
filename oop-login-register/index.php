@@ -6,6 +6,6 @@
  *      Time:   11:00 PM
  */
 
-  require_once 'core/init.php';
+require_once 'core/init.php';
 
 ?>

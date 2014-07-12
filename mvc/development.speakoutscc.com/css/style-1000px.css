@@ -10,51 +10,44 @@
 
 /* Basic */
 
-	body
-	{
-		font-size: 13pt;
-	}
+body {
+    font-size: 13pt;
+}
 
 /* Wrappers */
 
-	#header-wrapper
-	{
-		height: 92px;
-	}
+#header-wrapper {
+    height: 92px;
+}
 
 /* Site Header */
 
-	#site-header
-	{
-		background-size: 100% 170px;
-		height: 170px;
-	}
+#site-header {
+    background-size: 100% 170px;
+    height: 170px;
+}
 
 /* Logo */
 
-	#logo
-	{
-		height: 75px;
-		line-height: 75px;
-		left: 30px;
-	}
+#logo {
+    height: 75px;
+    line-height: 75px;
+    left: 30px;
+}
 
 /* Site Nav */
 
-	#nav
-	{
-		right: 30px;
-	}
+#nav {
+    right: 30px;
+}
 
-		#nav ul li
-		{
-			height: 80px;
-			line-height: 80px;
-			font-size: 1.1em;
-			margin: 0 0 0 1.5em;
-		}
+#nav ul li {
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.1em;
+    margin: 0 0 0 1.5em;
+}
 
-		#nav ul li.current_page_item
-		{
-			background-position: center 68px;
-		}
+#nav ul li.current_page_item {
+    background-position: center 68px;
+}

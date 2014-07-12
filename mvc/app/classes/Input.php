@@ -1,11 +1,8 @@
 <?php
 
-class Input
-{
-    public static function exists( $type = 'post' )
-    {
-        switch( strtolower( $type ) )
-        {
+class Input {
+    public static function exists( $type = 'post' ) {
+        switch ( strtolower( $type ) ) {
             case 'post':
                 return ( !empty( $_POST ) ) ? true : false;
                 break;
@@ -14,29 +11,21 @@ class Input
                 break;
             default:
                 return false;
-            break;
+                break;
         }
     }
 
-    public static function get( $item, $dataType = 'str' )
-    {
-        if( isset( $_POST[ $item ] ) )
-        {
+    public static function get( $item, $dataType = 'str' ) {
+        if ( isset( $_POST[ $item ] ) ) {
             $rtn_item = $_POST[ $item ];
-        }
-        elseif( isset( $_GET[ $item ] ) )
-        {
+        } elseif ( isset( $_GET[ $item ] ) ) {
             $rtn_item = $_GET[ $item ];
-        }
-        else
-        {
+        } else {
             $rtn_item = '';
         }
 
-        if( !empty( $rtn_item ) )
-        {
-            switch( strtolower( $dataType ) )
-            {
+        if ( !empty( $rtn_item ) ) {
+            switch ( strtolower( $dataType ) ) {
                 case 'int':
                     $rtn_item = intval( $rtn_item );
                     break;

@@ -4,17 +4,14 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 */
 
-.button
-{
-	background-image: url('images/button.svg');
+.button {
+    background-image: url('images/button.svg');
 }
 
-.button:hover
-{
-	background-image: url('images/button-hover.svg');
+.button:hover {
+    background-image: url('images/button-hover.svg');
 }
 
-.button:active
-{
-	background-image: url('images/button-active.svg');
+.button:active {
+    background-image: url('images/button-active.svg');
 }
