@@ -137,10 +137,4 @@ class Model {
     {
         return $this->_count;
     }
-
-    public static function is_auth() {
-        if ( !Session::get( 'logged_in' ) || ( Session::get( 'user_id' ) < 1 ) ) {
-            Redirect::to( 'login' );
-        }
-    }
 }

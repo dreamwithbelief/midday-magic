@@ -81,7 +81,16 @@
 
 <div id="main-wrapper">
     <div class="container">
-        <?php require_once $yield; ?>
+        <?php
+
+        if(!empty($user['name'])){
+            ?>
+            <h2>Welcome, <?=$user['name'];?></h2>
+        <?php
+        }
+        require_once $yield;
+
+        ?>
     </div>
 </div>
 

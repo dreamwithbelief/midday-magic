@@ -2,7 +2,7 @@
 
 class Home extends Controller {
     public function index() {
-        $this->view( 'admin/index', array( 'name' => Session::get( 'name' ) ) );
+        $this->view( 'home/index' );
     }
 
     public function events() {

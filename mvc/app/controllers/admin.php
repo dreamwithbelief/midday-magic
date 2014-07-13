@@ -3,32 +3,32 @@
 class Admin extends Controller {
 
     public function index() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/index', array( 'name' => Session::get( 'name' ) ) );
     }
 
     public function events() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/events' );
     }
 
     public function contact() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/contact' );
     }
 
     public function officers() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/officers' );
     }
 
     public function gallery() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/gallery' );
     }
 
     public function about() {
-        Model::is_auth();
+        $this->is_auth();
         $this->view( 'admin/about' );
     }
 
