@@ -101,12 +101,12 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => '',
+	'hostname' => 'mysql.development.speakoutscc.com',
+	'username' => 'speakout_dev',
 	'password' => '',
-	'database' => '',
+	'database' => 'speakout_development',
 	'dbdriver' => 'mysqli',
-	'dbprefix' => '',
+	'dbprefix' => '%4lqW^KqATw83*OUc#4q',
 	'pconnect' => TRUE,
 	'db_debug' => TRUE,
 	'cache_on' => FALSE,

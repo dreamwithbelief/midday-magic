@@ -53,7 +53,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | environments.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = 'development.speakoutscc.com';
 
 /*
 |--------------------------------------------------------------------------
@@ -332,7 +332,7 @@ $config['cache_path'] = '';
 | http://codeigniter.com/user_guide/libraries/sessions.html
 |
 */
-$config['encryption_key'] = '';
+$config['encryption_key'] = 'B0hX4f6R8of00nU100m21PUhO78L73Yj';
 
 /*
 |--------------------------------------------------------------------------
@@ -408,7 +408,7 @@ $config['standardize_newlines'] = FALSE;
 | COOKIE data is encountered
 |
 */
-$config['global_xss_filtering'] = FALSE;
+$config['global_xss_filtering'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------
