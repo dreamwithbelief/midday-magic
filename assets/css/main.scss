@@ -1,0 +1,10 @@
+$base-size: 16px;
+
+@function rems($size) {
+  $remSize: $size / $base-size;
+  @return #{$remSize}rem;
+}
+
+body {
+  margin-top: 60px;
+}

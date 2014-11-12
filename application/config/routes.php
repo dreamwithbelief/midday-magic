@@ -89,5 +89,7 @@ $route['default_controller'] = 'page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['assets/(:any)'] = 'assets/$1';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
