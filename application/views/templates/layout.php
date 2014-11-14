@@ -27,12 +27,12 @@
             </div>
             <div class="collapse navbar-collapse" id="main-nav">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><?= anchor('about', 'About'); ?></li>
-                    <li><?= anchor('gallery', 'Gallery'); ?></li>
-                    <li><?= anchor('events', 'Events'); ?></li>
-                    <li><?= anchor('officers', 'Officers'); ?></li>
-                    <li><?= anchor('contact', 'Contact'); ?></li>
-                    <li><?= anchor('user/login', 'Login'); ?></li>
+                    <li<?=$this->uri->segment(1)=='about' ? ' class="active"' : '' ?>><?= anchor('about', 'About'); ?></li>
+                    <li<?=$this->uri->segment(1)=='gallery' ? ' class="active"' : '' ?>><?= anchor('gallery', 'Gallery'); ?></li>
+                    <li<?=$this->uri->segment(1)=='events' ? ' class="active"' : '' ?>><?= anchor('events', 'Events'); ?></li>
+                    <li<?=$this->uri->segment(1)=='officers' ? ' class="active"' : '' ?>><?= anchor('officers', 'Officers'); ?></li>
+                    <li<?=$this->uri->segment(1)=='contact' ? ' class="active"' : '' ?>><?= anchor('contact', 'Contact'); ?></li>
+                    <li<?=$this->uri->segment(1)=='login' ? ' class="active"' : '' ?>><?= anchor('login', 'Login'); ?></li>
                 </ul>
             </div>
         </div>

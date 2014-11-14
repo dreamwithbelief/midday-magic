@@ -8,4 +8,19 @@ class User extends CI_Controller {
         $data = array('title' => 'Home');
         $this->template->load('layout', 'home', $data);
     }
+
+    public function register()
+    {
+
+    }
+
+    public function login()
+    {
+
+    }
+
+    public function logout()
+    {
+
+    }
 }

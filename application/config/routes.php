@@ -91,5 +91,11 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['assets/(:any)'] = 'assets/$1';
 
+$route['about'] = 'page/about';
+$route['gallery'] = 'page/gallery';
+$route['events'] = 'page/events';
+$route['officers'] = 'page/officers';
+$route['contact'] = 'page/contact';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
