@@ -3,7 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Page extends CI_Controller {
 
-    private $data = array();
     public function index()
     {
         $this->data['title'] = 'Home';

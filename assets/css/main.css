@@ -1,3 +1,27 @@
+.content-block {
+  margin-bottom: 1rem; }
+
+.content-block-sm {
+  margin-bottom: 2rem; }
+
+.content-block-md {
+  margin-bottom: 3rem; }
+
+.content-block-lg {
+  margin-bottom: 4rem; }
+
+.stripe {
+  padding: 1rem 0; }
+
+.stripe-sm {
+  padding: 2rem 0; }
+
+.stripe-md {
+  padding: 3rem 0; }
+
+.stripe-lg {
+  padding: 4rem 0; }
+
 body {
   margin-top: 60px; }
 

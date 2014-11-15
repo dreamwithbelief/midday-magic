@@ -96,6 +96,7 @@ $route['gallery'] = 'page/gallery';
 $route['events'] = 'page/events';
 $route['officers'] = 'page/officers';
 $route['contact'] = 'page/contact';
+$route['login'] = 'user/login';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

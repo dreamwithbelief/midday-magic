@@ -5,8 +5,8 @@ class User extends CI_Controller {
 
     public function index()
     {
-        $data = array('title' => 'Home');
-        $this->template->load('layout', 'home', $data);
+        $this->data['title'] = 'Users';
+        $this->template->load('layout', 'page/home', $this->data);
     }
 
     public function register()
@@ -16,7 +16,8 @@ class User extends CI_Controller {
 
     public function login()
     {
-
+        $this->data['title'] = 'User Login';
+        $this->template->load('layout', 'user/login', $this->data);
     }
 
     public function logout()

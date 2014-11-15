@@ -57,7 +57,7 @@ class CI_Controller {
 	 * @var	object
 	 */
 	private static $instance;
-
+    protected $data;
 	/**
 	 * Class constructor
 	 *
