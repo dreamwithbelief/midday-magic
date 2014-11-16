@@ -19,7 +19,7 @@
                 </div>
                 <div class="form-group text-right">
                     <input type="submit" class="btn btn-primary" id="submit" name="submit" value="Send">
-                    <input type="reset" class="btn btn-danger" id="reset" value="Clear">
+                    <button class="btn btn-danger clear">Clear</button>
                 </div>
             </form>
         </div>

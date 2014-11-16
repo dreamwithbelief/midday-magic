@@ -89,14 +89,15 @@ $route['default_controller'] = 'page';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['assets/(:any)'] = 'assets/$1';
 
 $route['about'] = 'page/about';
 $route['gallery'] = 'page/gallery';
 $route['events'] = 'page/events';
+$route['events/(\d{4})/(\d{1,2})'] = 'page/events/$1/$2';
 $route['officers'] = 'page/officers';
 $route['contact'] = 'page/contact';
 $route['login'] = 'user/login';
+$route['register'] = 'user/register';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */

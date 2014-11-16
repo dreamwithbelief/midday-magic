@@ -6,9 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="<?=base_url('assets/css/vendor/bootstrap.min.css');?>">
+    <link rel="stylesheet" href="<?=base_url('assets/css/vendor/bootstrap-theme.min.css');?>">
+    <link rel="stylesheet" href="<?=base_url('assets/css/vendor/slick.css');?>">
+    <link rel="stylesheet" href="<?=base_url('assets/css/main.css');?>?version=<?=rand(0,100);?>">
 </head>
 
 <body>
@@ -47,8 +48,11 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+
 <!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="<?=base_url('assets/js/vendor/bootstrap.min.js');?>"></script>
+<script src="<?=base_url('assets/js/vendor/slick.min.js');?>"></script>
+<script src="<?=base_url('assets/js/main.js');?>?version=<?=rand(0,100);?>"></script>
 </body>
 </html>

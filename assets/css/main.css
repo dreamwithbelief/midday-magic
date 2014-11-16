@@ -22,6 +22,34 @@
 .stripe-lg {
   padding: 4rem 0; }
 
+.inner {
+  padding: 1rem; }
+
+.inner-sm {
+  padding: 2rem; }
+
+.inner-md {
+  padding: 3rem; }
+
+.inner-lg {
+  padding: 4rem; }
+
+.calendar th {
+  text-align: center !important;
+  width: 1in; }
+.calendar td {
+  height: 1in;
+  width: 14.6%; }
+
+.gallery img, .gallery-nav img {
+  padding: 0 15px;
+  max-width: 100%;
+  display: inline-block; }
+
+.gallery-next, .gallery-prev {
+  position: relative;
+  top: 45px; }
+
 body {
   margin-top: 60px; }
 

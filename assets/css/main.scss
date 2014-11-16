@@ -15,6 +15,34 @@ $base-size: 16;
 .stripe-md { padding: rems($base-size*3) 0; }
 .stripe-lg { padding: rems($base-size*4) 0; }
 
+.inner { padding: rems($base-size); }
+.inner-sm { padding: rems($base-size*2); }
+.inner-md { padding: rems($base-size*3); }
+.inner-lg { padding: rems($base-size*4); }
+
+
+.calendar {
+  th {
+    text-align: center !important;
+    width: 1in;
+  }
+  td {
+    height: 1in;
+    width: 14.6%;
+  }
+}
+
+.gallery, .gallery-nav {
+  img {
+    padding: 0 15px;
+    max-width: 100%;
+    display: inline-block;
+  }
+}
+.gallery-next, .gallery-prev {
+  position: relative;
+  top: 45px;
+}
 
 body {
   margin-top: 60px;
