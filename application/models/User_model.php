@@ -10,7 +10,13 @@ class User_model extends CI_Model {
 
     public function get_newest_user()
     {
-        $this->db->get();
+        $this->db->select('*');
+        $this->db->from('profile');
+        $this->db->join('users', 'users.id = profile.user_id');
+        $this->db->order_by('created_at', 'DESC');
+        $this->db->limit(1);
+        $query = $this->db->get();
+        return $query->result();
     }
 
     public function get_all_users()
@@ -18,8 +24,8 @@ class User_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('profile');
         $this->db->join('users', 'users.id = profile.user_id');
-        $query = $this->db->get();
         $this->db->where('admin &', 3);
+        $query = $this->db->get();
         return $query->result();
     }
 
@@ -28,8 +34,8 @@ class User_model extends CI_Model {
         $this->db->select('*');
         $this->db->from('profile');
         $this->db->join('users', 'users.id = profile.user_id');
-        $query = $this->db->get();
         $this->db->where('admin &', 1);
+        $query = $this->db->get();
         return $query->result();
     }
 
@@ -46,17 +52,17 @@ class User_model extends CI_Model {
 
     public function create_user()
     {
-
+        $this->db->insert('users', $this);
     }
 
-    public function delete_user()
+    public function delete_user($id)
     {
-
+        $this->db->delete('users', array('id' => $id));
     }
 
-    public function suspend_user()
+    public function suspend_user($id)
     {
-
+        $this->db->update('users', array('suspend' => true), array('id' => $id));
     }
 
     public function edit_user()
