@@ -16,14 +16,8 @@ class Admin extends CI_Controller {
 
     public function about()
     {
-        $this->data['title'] = 'About Us';
-        $this->template->load('layout', 'page/about', $this->data);
-    }
-
-    public function gallery()
-    {
-        $this->data['title'] = 'Club Gallery';
-        $this->template->load('layout', 'page/gallery', $this->data);
+        $this->data['title'] = 'About Us Edit Page';
+        $this->template->load('layout', 'admin/about', $this->data);
     }
 
     public function events($year = null, $month = null)

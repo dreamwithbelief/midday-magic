@@ -1,4 +1,5 @@
 $(function() {
+    var counter = 0;
     $(document).on('click', '.clear', function(e) {
         e.preventDefault();
         $(this).closest('form').find('input[type=text],input[type=email],input[type=password],textarea').val('');
@@ -8,6 +9,11 @@ $(function() {
     }).on('click', '.gallery-next', function(e) {
         e.preventDefault();
         $('.gallery').slickNext();
+    }).on('change', '#files', function() {
+        var names = $.map($(this).prop('files'), function(val) { return val.name });
+        for(var i=0;i<names.length;i++) {
+            $('#fileList').append('<li>'+names[i]+'</li>');
+        }
     });
 
     $('.gallery-nav').children().clone().appendTo('.gallery');

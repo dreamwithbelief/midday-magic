@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="<?=base_url('assets/css/vendor/bootstrap-theme.min.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/css/vendor/slick.css');?>">
     <link rel="stylesheet" href="<?=base_url('assets/css/main.css');?>?version=<?=rand(0,100);?>">
+    <script src="<?=base_url('ckeditor/ckeditor.js');?>"></script>
 </head>
 
 <body>

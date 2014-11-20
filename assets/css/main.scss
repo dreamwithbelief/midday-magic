@@ -39,6 +39,14 @@ $base-size: 16;
     display: inline-block;
   }
 }
+
+.gallery-preview {
+  img {
+    width: 1in;
+    margin-right: 15px;
+  }
+}
+
 .gallery-next, .gallery-prev {
   position: relative;
   top: 45px;

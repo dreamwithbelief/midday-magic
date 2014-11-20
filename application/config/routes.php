@@ -99,5 +99,8 @@ $route['contact'] = 'page/contact';
 $route['login'] = 'user/login';
 $route['register'] = 'user/register';
 
+$route['admin/gallery/new'] = 'admin/gallery_new';
+$route['admin/gallery/delete'] = 'admin/gallery_delete';
+
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
