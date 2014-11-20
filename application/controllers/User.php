@@ -17,15 +17,15 @@ class User extends CI_Controller {
 
     public function logout()
     {
-        $this->aauth->logout();
+
     }
 
-    public function create_user()
+    public function create()
     {
 
     }
 
-    public function authenticate_user()
+    public function authenticate()
     {
 
     }
